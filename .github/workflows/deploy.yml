@@ -1,4 +1,4 @@
-name: Run JustWatch API
+name: Deploy to Cloudflare Workers
 
 on:
   push:
@@ -7,23 +7,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-api:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@2.0.0
         with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run API
-        run: |
-          python main.py
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
