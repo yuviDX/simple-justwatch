@@ -1,7 +1,0 @@
-name = "justwatch-api-worker"
-type = "javascript" # Worker script type
-
-# These values will be set via the deployment UI
-account_id = ""
-workers_dev = true
-compatibility_date = "2024-12-21"
