@@ -6,7 +6,7 @@ async function handleRequest(request) {
   const url = new URL(request.url);
   const params = new URLSearchParams(url.search);
 
-  // Example: Mock JustWatch API interaction
+  // Example: Mock API Response
   const mockResponse = {
     title: "Example Movie",
     year: 2024,
